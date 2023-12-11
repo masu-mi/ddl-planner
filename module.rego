@@ -26,3 +26,9 @@ add[a_id] { some a_id in { id | data.ddl.alter_table[id] } - { id | data.ddl.alt
 
 del[id] { data.ddl.drop_table[id] }
 del[id] { data.ddl.alter_drop_col[id] }
+
+replace_table_queries[c_id][d_id] {
+	create_table[c_id]
+	drop_table[d_id]
+	input[c_id].Name.Name == input[d_id].Name.Name
+}

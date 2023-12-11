@@ -25,9 +25,7 @@ func NewRegoRuntime(q func(*rego.Rego)) rego.PreparedEvalQuery {
 var addQuery = rego.Query(`data.ddl.add[id]`)
 var delQuery = rego.Query(`data.ddl.del[id]`)
 
-var swapTableQuery = rego.Query(`data.ddl.create_table[c_id]
-		data.ddl.drop_table[d_id]
-		input[c_id].Name.Name == input[d_id].Name.Name`)
+var replaceTableQuery = rego.Query(`data.ddl.replace_table_queries[c_id][d_id]`)
 
 var swapColumnQuery = rego.Query(`data.ddl.alter_add_col[a_id]
 data.ddl.alter_drop_col[d_id]

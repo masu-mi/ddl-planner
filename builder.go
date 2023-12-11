@@ -52,7 +52,7 @@ func buildPlan(ddls []ast.DDL, prefix string) *MigrationPlan {
 		info.drop[id] = mark
 	}
 
-	qTable := NewRegoRuntime(swapTableQuery)
+	qTable := NewRegoRuntime(replaceTableQuery)
 	rs, err = qTable.Eval(context.Background(), rego.EvalInput(ddls))
 	if err != nil {
 		pp.Println(err)
